@@ -101,7 +101,7 @@ cat <<'EOF' > $INSTALL/etc/init.d/nginx
 [ "$NETWORKING" = "no" ] && exit 0
  
 nginx="/usr/sbin/nginx"
-prog=$(buildname $nginx)
+prog=$(basename $nginx)
  
 NGINX_CONF_FILE="/etc/nginx/nginx.conf"
  
