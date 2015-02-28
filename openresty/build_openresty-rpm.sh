@@ -1,5 +1,5 @@
 #!/bin/bash
-yum install -y readline-devel pcre-devel openssl-devel gcc gcc-c++ zlib-devel make unzip git gd-devel geoip-devel rpm-build
+yum install -y readline-devel pcre-devel openssl-devel gcc gcc-c++ zlib-devel make unzip git gd-devel geoip-devel rpm-build ruby ruby-devel rubygems libxslt-devel
 gem install fpm
 
 ##########
@@ -34,8 +34,8 @@ mv openssl-1.0.1i openssl
 
 cd $build
 
-
-./configure --with-luajit \
+./configure  --prefix=/etc \
+--with-luajit \
 --with-pcre-jit \
 --sbin-path=/usr/sbin/nginx \
 --conf-path=/etc/nginx/nginx.conf \
