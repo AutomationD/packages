@@ -1,2 +1,2 @@
 #!/bin/bash
-useradd nginx -G nginx -h /var/lib/nginx -s /sbin/nologin
+useradd nginx -G nginx -d /var/lib/nginx -s /sbin/nologin
