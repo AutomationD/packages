@@ -77,7 +77,7 @@ cd $build
  
 make
  
-INSTALL=/tmp/openresty
+INSTALL=$base/tmp/openresty
 make install DESTDIR=$INSTALL
 mkdir -p $INSTALL/var/lib/nginx
 mkdir -p $INSTALL/etc/init.d/
