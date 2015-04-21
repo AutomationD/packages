@@ -80,8 +80,7 @@ mkdir -p $INSTALL/etc/sysconfig/
 
 cp $base/init.d-rhel $INSTALL/etc/init.d/nginx
 cp $base/sysconfig-rhel $INSTALL/etc/sysconfig/nginx
-
-sed -i 's/#user  nobody;/user  nginx;/' $INSTALL/etc/nginx/nginx.conf
+cp $base/nginx.conf $INSTALL/etc/nginx/nginx.conf
 
 chmod +rx $INSTALL/etc/init.d/nginx
 # fpm installation
