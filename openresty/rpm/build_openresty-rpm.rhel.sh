@@ -81,6 +81,8 @@ mkdir -p $INSTALL/etc/sysconfig/
 cp $base/init.d-rhel $INSTALL/etc/init.d/nginx
 cp $base/sysconfig-rhel $INSTALL/etc/sysconfig/nginx
 
+sed -i 's/#user  nobody;/user  nginx;/' $INSTALL/etc/nginx/nginx.conf
+
 chmod +rx $INSTALL/etc/init.d/nginx
 # fpm installation
 #yum -y install ruby1.9.1 ruby1.9.1-dev git-core libpcre3-dev libxslt1-dev libgd2-xpm-dev libgeoip-dev unzip zip build-essential gem
