@@ -92,6 +92,7 @@ cd $base
 # Package building
 rm -rf *.rpm
 fpm -s dir -t rpm -n openresty -v ${openresty_version} --iteration 1 -C $INSTALL --before-install "bash -c 'useradd nginx -G nginx -h /var/lib/nginx -s /sbin/nologin'"
+# --before-remove "bash -c 'service nginx stop && userdel nginx'"
 # fpm -s dir -t rpm -n openresty -v ${openresty_version} --iteration 1 -C $INSTALL \
 # --description "openresty ${openresty_version}" \
 # -d libxslt1.1 \
