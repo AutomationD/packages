@@ -76,6 +76,7 @@ INSTALL=$base/openresty
 make install DESTDIR=$INSTALL
 mkdir -p $INSTALL/var/lib/nginx
 mkdir -p $INSTALL/etc/init.d/
+mkdir -p $INSTALL/etc/sysconfig/
 
 cp $base/init.d-rhel $INSTALL/etc/init.d/nginx
 cp $base/sysconfig-rhel $INSTALL/etc/sysconfig/nginx
@@ -90,7 +91,7 @@ chmod +rx $INSTALL/etc/init.d/nginx
 cd $base
 # Package building
 rm -rf *.rpm
-fpm -s dir -t rpm -n openresty -v ${openresty_version} --iteration 1 -C $INSTALL
+fpm -s dir -t rpm -n openresty -v ${openresty_version} --iteration 1 -C $INSTALL --before-install "bash -c 'useradd nginx -G nginx -h /var/lib/nginx -s /sbin/nologin'"
 # fpm -s dir -t rpm -n openresty -v ${openresty_version} --iteration 1 -C $INSTALL \
 # --description "openresty ${openresty_version}" \
 # -d libxslt1.1 \
