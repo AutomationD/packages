@@ -78,7 +78,7 @@ mkdir -p $INSTALL/var/lib/nginx
 mkdir -p $INSTALL/etc/init.d/
 
 cp $base/init.d-rhel $INSTALL/etc/init.d/nginx
-cp $base/sysconfig-rhel $INSTALL/sysconfig/nginx
+cp $base/sysconfig-rhel $INSTALL/etc/sysconfig/nginx
 
 chmod +rx $INSTALL/etc/init.d/nginx
 # fpm installation
