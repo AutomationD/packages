@@ -1,0 +1,16 @@
+language: cpp
+install:
+- sudo chmod +rx $TRAVIS_BUILD_DIR/openresty/rpm/build_openresty-rpm.ubuntu.sh
+- sudo $TRAVIS_BUILD_DIR/openresty/rpm/build_openresty-rpm.ubuntu.sh
+#script:
+#- srec_cat -output ${file_name} -binary 0x00000.bin -binary -fill 0xff 0x00000 0x10000 0x10000.bin -binary -offset 0x10000
+#deploy:
+#  provider: releases
+#  api_key: "${GITHUB_OAUTH}"
+#  file: "$TRAVIS_BUILD_DIR/bin/${file_name}"
+#  skip_cleanup: true
+#  on:
+#    tags: true
+#env:
+#  global:
+#  - secure: OVFK1zFj8VFVITWIGR2UlinVoTFNjlcQZeFt4xpn+B0wLz1mAWnR//F49qLkAcZt2ca8ogbQwEyDenFfkcSKOkUpvivyDatkHEt4WAhdXeg2y3zdHjX7NntscQBpTUmwjhV/0OA0qV9sNLK5r1t45oDh2NVcpfEQTJP5oYKfe6I=
