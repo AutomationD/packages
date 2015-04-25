@@ -1,7 +1,8 @@
 @echo off
 
 set ESPRESSIF_HOME=c:/Espressif
-::echo Installing Chocolatey
+echo Upgrading Chocolatey
+choco upgrade chocolatey
 ::@powershell -NoProfile -ExecutionPolicy unrestricted -Command "iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))" && SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin
 
 echo Add repository
