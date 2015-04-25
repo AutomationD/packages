@@ -8,8 +8,8 @@ echo Enabling case sensitivity
 REG ADD "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\kernel" /v "obcaseinsensitive" /t REG_DWORD /d 0 /f
 
 echo Installing MingGW
-choco install mingw
-choco install mingw-get
+choco install mingw -y
+choco install mingw-get -y
 
 setx /M PATH "c:\tools\mingw64\bin\;%PATH%"
 setx /M PATH "c:\tools\mingw64\include\;%PATH%"
