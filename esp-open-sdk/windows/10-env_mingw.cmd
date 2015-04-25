@@ -2,7 +2,7 @@
 
 set ESPRESSIF_HOME=c:/Espressif
 echo Upgrading Chocolatey
-choco upgrade chocolatey
+choco update chocolatey
 ::@powershell -NoProfile -ExecutionPolicy unrestricted -Command "iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))" && SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin
 
 echo Add repository
@@ -11,14 +11,9 @@ choco sources add -name kireevco -source 'https://www.myget.org/F/kireevco-choco
 echo Installing wget
 choco install wget -y
 
-echo Installing Git
-choco install git -y
-
 echo Installing MingGW-get (pulls down mingw too)
 choco install mingw-get -y
 
-echo Adding git to the PATH
-setx /M PATH "%programfiles(x86)%\Git\bin;%PATH%" && set PATH=%programfiles(x86)%\Git\bin;%PATH%
 echo Adding ENV variables
 setx /M PATH "c:\tools\mingw64\bin\;%PATH%" && set PATH=c:\tools\mingw64\bin\;%PATH%
 setx /M PATH "c:\tools\mingw64\include\;%PATH%" && set PATH=c:\tools\mingw64\include\;%PATH%
