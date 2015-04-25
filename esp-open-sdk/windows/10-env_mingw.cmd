@@ -1,7 +1,6 @@
 @echo off
 
 set ESPRESSIF_HOME=c:/Espressif
-set CYGWIN_HOME=c:/tools/cygwin
 echo Installing Chocolatey
 @powershell -NoProfile -ExecutionPolicy unrestricted -Command "iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))" && SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin
 
@@ -19,7 +18,7 @@ setx /M PATH "c:\tools\mingw64\msys\1.0\include\;%PATH%"
 
 
 echo Installing Git
-choco install git
+choco install git -y
 
 
 echo Adding git to the path
@@ -44,7 +43,7 @@ mingw-get install mingw32-base mingw32-mgwport mingw32-pdcurses mingw32-make min
 ::choco install mingw-gcc -source cygwin
 ::??choco install mingw64-x86_64-gcc-g++ -source cygwin
 
-echo Adding cygwin aliases
+echo Adding aliases
 bash -c "echo \"alias find='/usr/bin/find'\" >> ~/.bashrc"
 bash -c "echo \"alias find='/usr/bin/find'\" >> /etc/bash.bashrc"
 
