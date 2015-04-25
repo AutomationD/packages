@@ -1,8 +1,8 @@
 @echo off
 
 set ESPRESSIF_HOME=c:/Espressif
-echo Installing Chocolatey
-@powershell -NoProfile -ExecutionPolicy unrestricted -Command "iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))" && SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin
+::echo Installing Chocolatey
+::@powershell -NoProfile -ExecutionPolicy unrestricted -Command "iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))" && SET PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin
 
 echo Add repository
 choco sources add -name kireevco -source 'https://www.myget.org/F/kireevco-chocolatey/'
@@ -17,12 +17,12 @@ echo Installing MingGW-get (pulls down mingw too)
 choco install mingw-get -y
 
 echo Adding git to the PATH
-setx /M PATH "%programfiles(x86)%\Git\bin;%PATH%"
+setx /M PATH "%programfiles(x86)%\Git\bin;%PATH%" && set PATH=%programfiles(x86)%\Git\bin;%PATH%
 echo Adding ENV variables
-setx /M PATH "c:\tools\mingw64\bin\;%PATH%"
-setx /M PATH "c:\tools\mingw64\include\;%PATH%"
-setx /M PATH "c:\tools\mingw64\msys\1.0\bin\;%PATH%"
-setx /M PATH "c:\tools\mingw64\msys\1.0\include\;%PATH%"
+setx /M PATH "c:\tools\mingw64\bin\;%PATH%" && set PATH=c:\tools\mingw64\bin\;%PATH%
+setx /M PATH "c:\tools\mingw64\include\;%PATH%" && set PATH=c:\tools\mingw64\include\;%PATH%
+setx /M PATH "c:\tools\mingw64\msys\1.0\bin\;%PATH%" && set PATH=c:\tools\mingw64\msys\1.0\bin\;%PATH%
+setx /M PATH "c:\tools\mingw64\msys\1.0\include\;%PATH%" && set PATH=c:\tools\mingw64\msys\1.0\include\;%PATH%
 
 ::echo Enabling case sensitivity (???not required with mingw & msys)
 ::REG ADD "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\kernel" /v "obcaseinsensitive" /t REG_DWORD /d 0 /f
