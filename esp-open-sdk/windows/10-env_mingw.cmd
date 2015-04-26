@@ -27,7 +27,7 @@ echo Installing required mingw components
 
 mingw-get install mingw32-base mingw32-mgwport mingw32-pdcurses mingw32-make mingw32-autoconf mingw32-automake mingw-developer-toolkit ^
  mingw-developer-toolkit  mingw32-gdb gcc gcc-c++ libz bzip2 msys-base msys-coreutils msys-coreutils-ext msys-gcc-bin msys-wget-bin ^
- msys-m4 msys-bison-bin msys-flex-bin msys-gawk msys-make msys-regex msys-libregex msys-sed msys-autoconf msys-gperf msys-automake msys-mktemp msys-patch msys-libtool 
+ msys-m4 msys-bison-bin msys-bison msys-flex msys-flex-bin msys-gawk msys-make msys-regex msys-libregex msys-sed msys-autoconf msys-gperf msys-automake msys-mktemp msys-patch msys-libtool 
 
 ::choco install mingw-gcc -source cygwin
 ::??choco install mingw64-x86_64-gcc-g++ -source cygwin
