@@ -1,2 +1,2 @@
-call 10-env.cmd
-call 20-build.cmd
+call mingw/10-env_mingw.cmd
+call mingw/20-build_mingw.cmd
