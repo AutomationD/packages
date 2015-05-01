@@ -15,6 +15,7 @@ echo Installing MingGW-get (pulls down mingw too)
 choco install mingw-get -y
 
 echo Adding ENV variables
+setx /M HOME "c:\Users"
 setx /M PATH "c:\tools\mingw64\bin\;%PATH%" && set PATH=c:\tools\mingw64\bin\;%PATH%
 setx /M PATH "c:\tools\mingw64\include\;%PATH%" && set PATH=c:\tools\mingw64\include\;%PATH%
 setx /M PATH "c:\tools\mingw64\msys\1.0\bin\;%PATH%" && set PATH=c:\tools\mingw64\msys\1.0\bin\;%PATH%
