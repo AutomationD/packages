@@ -4,25 +4,36 @@ git clone https://github.com/pfalcon/esp-open-sdk.git --recursive
 echo Descending to esp-open-sdk
 cd esp-open-sdk
 
+echo Patching esp-open-sdk
+:: bash -c "sed -i.bak '1s/^/gettext=\'$'\n/' crosstool-NG/kconfig/Makefile"
+:: bash -c "sed -i.bak -e 's/[[:<:]]sed[[:>:]]/gsed/' Makefile"
+:: bash -c "sed -i.bak -e 's/[[:<:]]awk[[:>:]]/\$(AWK)/' lx106-hal/src/Makefile.am"
+:: bash -c "sed -i.bak 's/AM_PROG_AS/AM_PROG_AS\'$'\nAM_PROG_AR/' lx106-hal/configure.ac"
+
 echo Patching nconf.c
-bash -c "sed -i 's/ESCDELAY = 1;/set_escdelay(1);/g' ./crosstool-NG/kconfig/nconf.c"
+::bash -c "sed -i 's/ESCDELAY = 1;/set_escdelay(1);/g' ./crosstool-NG/kconfig/nconf.c"
 
 
 echo Building gperf
 bash -c "wget http://ftp.gnu.org/pub/gnu/gperf/gperf-3.0.4.tar.gz"
 bash -c "tar -zxf gperf-3.0.4.tar.gz"
-bash -c "cd gperf-3.0.4 && ./configure --prefix=/usr && make && make install"
+cd gperf-3.0.4
+bash -c "./configure --prefix=/usr"
+bash -c "make"
+bash -c "make install"
 
+cd ..
 echo Building ncurses
 bash -c "wget http://invisible-island.net/datafiles/release/ncurses.tar.gz"
 bash -c "tar -zxf ncurses.tar.gz"
-cd ncurses-*
-bash -c "sed -i 's/#include <curses.priv.h>/#include <curses.priv.h>\\n#include <sys\/time.h>/g' ./ncurses/win32con/gettimeofday.c"
-bash -c "sed -i 's/void \*tz GCC_UNUSED/struct timezone \*tz/g' ./ncurses/win32con/gettimeofday.c"
-bash -c "sed -i 's/#include <curses.priv.h>/#include <curses.priv.h>\\n#include <windows.h>\\n#define ATTACH_PARENT_PROCESS (DWORD)-1/g' ./ncurses/win32con/win_driver.c"
 
-bash -c "sed -i 's/double fraction = 0.0;//g' ./test/tclock.c"
-bash -c "sed -i 's/setlocale/double fraction = 0.0;\\nsetlocale/g' ./test/tclock.c"
+cd ncurses-*
+::bash -c "sed -i 's/#include <curses.priv.h>/#include <curses.priv.h>\\n#include <sys\/time.h>/g' ./ncurses/win32con/gettimeofday.c"
+::bash -c "sed -i 's/void \*tz GCC_UNUSED/struct timezone \*tz/g' ./ncurses/win32con/gettimeofday.c"
+::bash -c "sed -i 's/#include <curses.priv.h>/#include <curses.priv.h>\\n#include <windows.h>\\n#define ATTACH_PARENT_PROCESS (DWORD)-1/g' ./ncurses/win32con/win_driver.c"
+
+::bash -c "sed -i 's/double fraction = 0.0;//g' ./test/tclock.c"
+::bash -c "sed -i 's/setlocale/double fraction = 0.0;\\nsetlocale/g' ./test/tclock.c"
 
 
 bash -c "./configure --enable-term-driver --enable-sp-funcs --prefix=/usr --without-ada"
