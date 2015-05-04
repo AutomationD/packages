@@ -1,0 +1,12 @@
+37a38
+> conf: LDFLAGS += -lintl
+44c45
+< mconf: LDFLAGS += $(NCURSES_LDFLAGS)
+---
+> mconf: LDFLAGS += -lintl $(NCURSES_LDFLAGS)
+50,51c51,52
+< $(nconf_OBJ) $(nconf_DEP): CFLAGS += $(INTL_CFLAGS) -I/usr/include/ncurses
+< nconf: LDFLAGS += -lmenu -lpanel -lncurses
+---
+> $(nconf_OBJ) $(nconf_DEP): CFLAGS += -I/usr/include/ncurses/ $(INTL_CFLAGS)
+> nconf: LDFLAGS += -lintl -lmenu -lpanel -lncurses
