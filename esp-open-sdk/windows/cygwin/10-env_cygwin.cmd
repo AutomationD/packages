@@ -9,7 +9,7 @@ echo Enabling case sensitivity
 REG ADD "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\kernel" /v "obcaseinsensitive" /t REG_DWORD /d 0 /f
 
 echo Installing Cygwin
-choco install cygwin -overrideArgs -installArgs '-q -R C:\tools\cygwin -l C:\tools\cygwin\packages -s http://mirrors.kernel.org/sourceware/cygwin'
+choco install cygwin -y --overrideArgs --installArgs "-q -R C:\tools\cygwin -l C:\tools\cygwin\packages -s http://mirrors.kernel.org/sourceware/cygwin"
 
 echo saving current path
 echo %PATH% > %CD%\path.save
@@ -19,7 +19,7 @@ echo Set Path - making sure it is short enought
 setx /M PATH "c:\tools\cygwin\bin\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\ProgramData\chocolatey\bin;C:\Windows\System32\WindowsPowerShell\v1.0\;"
 
 echo Installing cyg-get chocolatey provider
-choco install cyg-get -source 'https://www.myget.org/F/kireevco-chocolatey/'
+choco install cyg-get -y
 
 echo Installing required components
 ::choco install ^
@@ -30,7 +30,7 @@ echo Installing required components
 
 ::z
 ::choco install git gperf bison flex patch make gcc-tools-epoch2-automake automake libtool subversion gcc-core gcc-g++ catgets wget findutils libncursesw-devel libncurses-devel gettext libexpat-devel -source cygwin
-choco install git gperf bison flex patch make automake gcc-tools-epoch2-automake autoconf autoconf2.5 libtool subversion gcc-core gcc-g++ catgets wget findutils libncursesw-devel libncurses-devel gettext libexpat-devel -source cygwin
+cyg-get gperf bison flex patch make automake gcc-tools-epoch2-automake autoconf autoconf2.5 libtool subversion gcc-core gcc-g++ catgets wget findutils libncursesw-devel libncurses-devel gettext libexpat-devel
 
 ::choco install libmpc libmpc-devel -source cygwin
 ::choco install mingw-gcc -source Cygwin
