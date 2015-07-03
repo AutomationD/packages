@@ -1,5 +1,4 @@
-set BUILD_HOME=c:/tools/cygwin/mnt/case-sensitive
-
+set ESP_HOME=%CD%
 
 echo Cloning esp-open-sdk recursively
 git clone https://github.com/pfalcon/esp-open-sdk.git --recursive
@@ -8,8 +7,8 @@ echo Descending to esp-open-sdk
 cd esp-open-sdk
 
 echo Patching fstab to be case-sensitive
-echo %BUILD_HOME% /mnt/case-sensitive ntfs posix=1 >> c:/tools/cygwin/etc/fstab
-bash -c 'mkdir -p /mnt/case-sensitive'
+echo %ESP_HOME%/esp-open-sdk /opt/esp-open-sdk ntfs posix=1 >> c:/tools/cygwin/etc/fstab
+bash -c 'mkdir -p /opt/esp-open-sdk'
 bash -c 'mount'
 
 
