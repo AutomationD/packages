@@ -22,6 +22,6 @@ cd $BUILD_DIR/$PROJECT_NAME
 tar -zcf $BUILD_DIR/$FILENAME ./esp_iot_sdk_v*/ ./esptool* ./sdk ./xtensa-lx106-elf
 
 echo "Pushing to bintray"
-curl -T $FILENAME -ukireevco:$1 https://api.bintray.com/content/kireevco/generic/${PROJECT_NAME}/${VERSION}/${FILENAME} -k
+curl -T $BUILD_DIR/$FILENAME -ukireevco:$1 https://api.bintray.com/content/kireevco/generic/${PROJECT_NAME}/${VERSION}/${FILENAME} -k
 
 cd $BUILD_DIR
