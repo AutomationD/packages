@@ -16,7 +16,7 @@ git clone --recursive https://github.com/pfalcon/esp-open-sdk.git
 cd $BUILD_DIR/$PROJECT_NAME
 
 echo "Building $PROJECT_NAME"
-make
+make STANDALONE=y
 
 cd $BUILD_DIR/$PROJECT_NAME
 tar -zcf $BUILD_DIR/$FILENAME ./esp_iot_sdk_v*/ ./esptool* ./sdk ./xtensa-lx106-elf
