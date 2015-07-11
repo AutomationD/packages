@@ -9,8 +9,8 @@ ARCH="x86_64"
 
 FILENAME="${PROJECT_NAME}-${VERSION}-${PLATFORM}-${ARCH}.tar.gz"
 
-cd /Volumes/case-sensitive
-rm -rf *
+cd /Volumes/case-sensitive && rm -rf *
+
 
 ##### Build ESP Toolchain
 git clone https://github.com/pfalcon/esp-open-sdk
