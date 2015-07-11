@@ -9,22 +9,6 @@ ARCH="x86_64"
 
 FILENAME="${PROJECT_NAME}-${VERSION}-${PLATFORM}-${ARCH}.tar.gz"
 
-##### Create a case-sensitive partition
-if [ -d /Volumes/case-sensitive ]; then
-  echo "Unmounting /Volumes/case-sensitive"
-  umount /Volumes/case-sensitive
-fi
-
-if [ -f ~/case-sensitive.dmg ]; then
-  echo "Removing ~/case-sensitive.dmg"
-  rm -rf ~/case-sensitive.dmg
-fi
-
-echo "Creating new ~/case-sensitive.dmg"
-hdiutil create ~/case-sensitive.dmg -volname "case-sensitive" -size 10g -fs "Case-sensitive HFS+"
-
-echo "Mounting ~/case-sensitive.dmg"
-hdiutil mount ~/case-sensitive.dmg
 
 if ! [ -d /Volumes/case-sensitive ]; then
   echo "Can't find /Volumes/case-sensitive"
