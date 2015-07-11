@@ -16,7 +16,8 @@ fi
 
 if [ -f ~/case-sensitive.dmg ]; then
   rm -rf ~/case-sensitive.dmg
-done
+fi
+
 hdiutil create ~/case-sensitive.dmg -volname "case-sensitive" -size 10g -fs "Case-sensitive HFS+"
 hdiutil mount ~/case-sensitive.dmg
 
