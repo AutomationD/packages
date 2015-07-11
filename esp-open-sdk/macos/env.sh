@@ -6,4 +6,4 @@ fi
 
 cd ~/
 curl -L -o xcode-6.2-cmd-tools.pkg https://www.dropbox.com/s/1t7ux39sccxqfwx/xcode-6.2-cmd-tools.pkg\?dl\=0
-installer -pkg ~/xcode-6.2-cmd-tools.pkg -target /
+installer -pkg ~/xcode-6.2-cmd-tools.pkg -target / && rm -rf xcode-6.2-cmd-tools.pkg
