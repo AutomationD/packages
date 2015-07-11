@@ -9,7 +9,23 @@ ARCH="x86_64"
 
 FILENAME="${PROJECT_NAME}-${VERSION}-${PLATFORM}-${ARCH}.tar.gz"
 
-cd /Volumes/case-sensitive && rm -rf *
+##### Create a case-sensitive partition
+if [ -f /Volumes/case-sensitive ]; then
+  umount /Volumes/case-sensitive
+fi
+
+if [ -f ~/case-sensitive.dmg ]; then
+  rm -rf ~/case-sensitive.dmg
+done
+hdiutil create ~/case-sensitive.dmg -volname "case-sensitive" -size 10g -fs "Case-sensitive HFS+"
+hdiutil mount ~/case-sensitive.dmg
+
+if ! [ -f /Volumes/case-sensitive ]; then
+  echo "Can't find /Volumes/case-sensitive"
+  exit 1
+fi
+
+cd /Volumes/case-sensitive 
 
 
 ##### Build ESP Toolchain
