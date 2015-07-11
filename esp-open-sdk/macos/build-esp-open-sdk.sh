@@ -23,12 +23,14 @@ git clone https://github.com/pfalcon/esp-open-sdk
 cd $PROJECT_NAME
 make STANDALONE=y # It will take a while
 
-# Move your ESP Toolchain to /opt/esp-open-sdk
+echo "Cleanup unnessesary files"
 cd $BUILD_DIR
 mkdir -p $BUILD_DIR/$PROJECT_NAME
-rm -rf /Volumes/case-sensitive/$PROJECT_NAME/esp_iot_sdk*.zip
+rm -rf /Volumes/case-sensitive/$PROJECT_NAME/esp_iot_sdk*.tar.gz
 cd /Volumes/case-sensitive/$PROJECT_NAME/
 
+echo "Creating $FILENAME"
 tar -zcf $BUILD_DIR/$FILENAME ./esp_iot_sdk_v*/ ./esptool* ./sdk ./xtensa-lx106-elf
-###### Upload to bintray
-curl -T $BUILD_DIR/$FILENAME -ukireevco:$1 https://api.bintray.com/content/kireevco/generic/esp-open-sdk/$VERSION/$FILENAME
+
+echo "Pushing to bintray"
+curl -T $BUILD_DIR/$FILENAME -ukireevco:$1 https://api.bintray.com/content/kireevco/generic/$PROJECT_NAME/$VERSION/$FILENAME
