@@ -5,7 +5,7 @@ if [ "$(id -u)" != "0" ]; then
 fi
 
 cd ~/
-if [ -d $(xcode-select -p)]; then
+if [ -d $(xcode-select -p) ]; then
   echo "Xcode is installed"
 else
   echo "Installing Xcode"
@@ -15,9 +15,10 @@ fi
 
 
 ##### Create a case-sensitive partition
-if [ -d /Volumes/case-sensitive ]; then
-  echo "Unmounting /Volumes/case-sensitive"
-  umount /Volumes/case-sensitive
+files=$(ls /Volumes/case-sensitive* 2> /dev/null | wc -l)
+if [ "$files" != "0" ]; then
+  echo "Unmounting /Volumes/case-sensitive*"
+  umount /Volumes/case-sensitive*
 fi
 
 if [ -f ~/case-sensitive.dmg ]; then
