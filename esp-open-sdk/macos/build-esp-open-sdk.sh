@@ -17,6 +17,9 @@ fi
 
 cd /Volumes/case-sensitive 
 
+echo "Cleaning up old build"
+rm -rf *
+
 
 ##### Build ESP Toolchain
 git clone https://github.com/pfalcon/esp-open-sdk
