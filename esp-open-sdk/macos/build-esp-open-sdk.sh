@@ -21,7 +21,7 @@ cd /Volumes/case-sensitive
 ##### Build ESP Toolchain
 git clone https://github.com/pfalcon/esp-open-sdk
 cd $PROJECT_NAME
-make STANDALONE=y # It will take a while
+make STANDALONE=y VENDOR_SDK=$VERSION
 
 echo "Cleanup unnessesary files"
 cd $BUILD_DIR
