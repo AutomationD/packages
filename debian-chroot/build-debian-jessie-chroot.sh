@@ -10,6 +10,7 @@ FILENAME="${PROJECT_NAME}-${VERSION}-${ARCH}.tar.gz"
 
 echo "Cleaning up old files"
 rm -rf $BUILD_DIR/debian/*
+rm -rf $BUILD_DIR/*.tar.gz
 
 mkdir -p $BUILD_DIR/debian/
 
