@@ -1,7 +1,7 @@
 #!/bin/bash
 ######
 PROJECT_NAME='esp-open-sdk'
-VERSION='1.2'
+VERSION='1.1.2'
 BUILD_NUMBER='1'
 BUILD_DIR=$(pwd)
 PLATFORM="macos"
