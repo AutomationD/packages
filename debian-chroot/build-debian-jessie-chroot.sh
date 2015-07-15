@@ -16,8 +16,9 @@ mkdir -p $BUILD_DIR/debian/
 echo "Generate chroot"
 debootstrap --foreign --arch $ARCH $VERSION $BUILD_DIR/debian/ http://http.debian.net/debian/
 
+cd $BUILD_DIR
 echo "Creating $FILENAME"
-tar -zcf $BUILD_DIR/$FILENAME $BUILD_DIR/debian/*
+tar -zcf $BUILD_DIR/$FILENAME ./debian/*
 
 
 echo "Pushing to bintray"
