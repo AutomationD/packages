@@ -17,6 +17,18 @@ mkdir -p $BUILD_DIR/debian/
 echo "Generate chroot"
 debootstrap --foreign --arch $ARCH $VERSION $BUILD_DIR/debian/ http://http.debian.net/debian/
 
+echo "Preparing chroot image"
+
+cd $BUILD_DIR/debian/
+rm -rf debootstrap
+
+mkdir -p {media,opt,srv}
+
+mklink run /var/run
+
+
+
+
 cd $BUILD_DIR
 echo "Creating $FILENAME"
 tar -zcf $BUILD_DIR/$FILENAME ./debian/*

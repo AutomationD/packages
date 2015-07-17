@@ -1,2 +1,2 @@
 #!/bin/bash
-apt-get install -y debootstrap curl wget mc
+apt-get update && apt-get install -y debootstrap curl wget mc
