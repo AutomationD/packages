@@ -1,6 +1,6 @@
 #!/bin/bash
 PROJECT_NAME='debian-chroot'
-VERSION='wheezy-recent'
+VERSION='wheezy-full'
 BUILD_NUMBER='1'
 BUILD_DIR=$(pwd)
 ARCH="mipsel"
