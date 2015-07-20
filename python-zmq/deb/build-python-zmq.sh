@@ -8,8 +8,9 @@ INSTALL=$BUILD_DIR/deb
 FILENAME=${PROJECT_NAME}_${VERSION}-${BUILD_NUMBER}_${ARCH}.deb
 
 ####
-rm -rf $INSTALL
-mkdir /p $INSTALL
+rm -dR $INSTALL/
+mkdir -p $INSTALL/
+
 
 echo "Installing ${PROJECT_NAME} via pip"
 pip install --ignore-installed --install-option="--prefix=$INSTALL --zmq=/usr/lib/libzmq.so" pyzmq==$VERSION
