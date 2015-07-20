@@ -8,7 +8,7 @@ INSTALL=$BUILD_DIR/deb
 FILENAME=${PROJECT_NAME}_${VERSION}-${BUILD_NUMBER}_${ARCH}.deb
 
 ####
-rm -dR $INSTALL/
+rm -rf $INSTALL/
 mkdir -p $INSTALL/
 
 
