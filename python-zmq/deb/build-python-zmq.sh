@@ -4,7 +4,7 @@ VERSION='14.7.0'
 BUILD_NUMBER='1'
 BUILD_DIR=$(pwd)
 ARCH="mipsel"
-INSTALL=$BUILD_DIR/deb
+INSTALL=$BUILD_DIR/build
 FILENAME=${PROJECT_NAME}_${VERSION}-${BUILD_NUMBER}_${ARCH}.deb
 
 ####
@@ -17,7 +17,7 @@ pip install --ignore-installed --install-option="--prefix=$INSTALL --zmq=/usr/li
 
 cd $BUILD_DIR
 
-# Package building
+echo "Building Package via fpm"
 fpm -s dir -t deb -a $ARCH -n $PROJECT_NAME -v $VERSION --iteration $BUILD_NUMBER -C $INSTALL \
 --description "$PROJECT_NAME $VERSION" \
 --conflicts python-zmq \

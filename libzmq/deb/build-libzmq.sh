@@ -4,7 +4,7 @@ VERSION='4.1.2'
 BUILD_NUMBER='1'
 BUILD_DIR=$(pwd)
 ARCH="mipsel"
-INSTALL=$BUILD_DIR/zeromq-${VERSION}/deb
+INSTALL=$BUILD_DIR/zeromq-${VERSION}/build
 FILENAME=${PROJECT_NAME}_${VERSION}-${BUILD_NUMBER}_${ARCH}.deb
 
 ####
@@ -37,4 +37,4 @@ usr
 
 
 echo "Pushing to bintray"
-curl -T $BUILD_DIR/${FILENAME} -ukireevco:$1 https://api.bintray.com/content/kireevco/deb/$PROJECT_NAME/$VERSION/$FILENAME
+curl -T $BUILD_DIR/${FILENAME} -ukireevco:$1 https://api.bintray.com/content/kireevco/debian/$PROJECT_NAME/$VERSION/$FILENAME
