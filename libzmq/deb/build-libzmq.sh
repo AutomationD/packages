@@ -8,7 +8,7 @@ INSTALL=$BUILD_DIR/zeromq-${VERSION}/build
 FILENAME=${PROJECT_NAME}_${VERSION}-${BUILD_NUMBER}_${ARCH}.deb
 
 ####
-apt-get install -y pkg-config ruby gem
+apt-get install -y pkg-config ruby rubygems
 gem install fpm
 # echo "Downloading libsodium"
 # git clone https://github.com/jedisct1/libsodium $BUILD/libsodium
