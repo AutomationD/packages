@@ -2,7 +2,10 @@
 PROJECT_NAME='chef'
 BUILD_DIR=$(pwd)
 #########
+# export CROSS_COMPILE=mipsel-linux-gnu-
+# export ARCH="mipsel"
 
+rm -rf omnibus-chef
 git clone https://github.com/chef/omnibus-chef
 cd omnibus-chef
 bundle install --without development
