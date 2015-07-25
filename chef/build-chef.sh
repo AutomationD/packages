@@ -3,7 +3,7 @@ PROJECT_NAME='chef'
 BUILD_DIR=$(pwd)
 VERSION="12.3.0.rc.0"
 BUILD_NUMBER='1'
-ARCH="mipsel"
+ARCH="armhf"
 FILENAME="${PROJECT_NAME}_${VERSION}-${BUILD_NUMBER}_${ARCH}.deb"
 #########
 # export CROSS_COMPILE=mipsel-linux-gnu-
@@ -24,13 +24,13 @@ mkdir -p ${PROJECT_NAME}_repack
 dpkg-deb -x ${PROJECT_NAME}_*.deb ${PROJECT_NAME}_repack
 dpkg-deb -e ${PROJECT_NAME}_*.deb ${PROJECT_NAME}_repack/DEBIAN
 
-# if [[ $(uname -n) == "debian-${ARCH}" ]]
+# if [[ $(uname -n) == "armv7l" ]]
 # then
-  sed -i "s/Architecture: mips\b/Architecture: mipsel/g" ${BUILD_DIR}/omnibus-chef/pkg/${PROJECT_NAME}_repack/DEBIAN/control  
+  sed -i "s/Architecture: armv7l\b/Architecture: ${ARCH}/g" ${BUILD_DIR}/omnibus-chef/pkg/${PROJECT_NAME}_repack/DEBIAN/control
 # fi
 
 
-dpkg-deb -b ${PROJECT_NAME}_repack ${PROJECT_NAME}_${VERSION}-${BUILD_NUMBER}_${ARCH}.deb
+dpkg-deb -b ${BUILD_DIR}/omnibus-chef/pkg/${PROJECT_NAME}_repack ${PROJECT_NAME}_${VERSION}-${BUILD_NUMBER}_${ARCH}.deb
 
 # echo "Pushing to bintray"
 curl -T ${PROJECT_NAME}_${VERSION}-${BUILD_NUMBER}_${ARCH}.deb -ukireevco:$1 https://api.bintray.com/content/kireevco/deb/$PROJECT_NAME/$VERSION/$FILENAME
