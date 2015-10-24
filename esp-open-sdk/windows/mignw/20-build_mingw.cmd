@@ -11,8 +11,29 @@ echo Patching esp-open-sdk
 :: bash -c "sed -i.bak 's/AM_PROG_AS/AM_PROG_AS\'$'\nAM_PROG_AR/' lx106-hal/configure.ac"
 
 echo Patching nconf.c
-::bash -c "sed -i 's/ESCDELAY = 1;/set_escdelay(1);/g' ./crosstool-NG/kconfig/nconf.c"
+:::::::::::::::::::
+:::: This needs to go as a patch to Makefile of esp-open-sdk or after checkout
+bash -c "sed -i 's/ESCDELAY = 1;/set_escdelay(1);/g' ./crosstool-NG/kconfig/nconf.c"
+bash -c "sed -i 's/static int show_all_items;/static int show_all_items;\\nconst char *strcasestr(const char *s1, const char *s2);/g' ./crosstool-NG/kconfig/nconf.c"
 
+::const char *strcasestr(const char *s1, const char *s2)
+::{
+:: // if either pointer is null
+:: if (s1 == 0 || s2 == 0)
+::  return 0;
+:: // the length of the needle
+:: size_t n = strlen(s2);
+:: // iterate through the string
+:: while(*s1)
+:: // if the compare which is case insensitive is a match, return the pointer
+:: if(!strncmpi(s1++,s2,n))
+::  return (s1-1);
+:: // no match was found
+:: return 0;
+::}
+
+
+::: ADD strcasestr #10  http://www.geekdroppings.com/2014/03/16/cross-compiling-with-mingw-and-crosstool-ng/
 
 echo Building gperf
 bash -c "wget http://ftp.gnu.org/pub/gnu/gperf/gperf-3.0.4.tar.gz"
@@ -47,8 +68,8 @@ bash -c "make install"
 ::bash -c "unzip mingw64.zip -d /"
 
 
-
-
+:::crap
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 ::??make opt/esp-open-sdk in cygwin
 
 
@@ -58,7 +79,10 @@ bash -c "make install"
 ::bash -c 'mount'
 
 
-::bash -c 'grep -rl "ESCDELAY = 1;" ./ | xargs sed -i "s/ESCDELAY = 1;/set_escdelay(1);/g"'
+::bash -c "sed -i 's/ESCDELAY = 1;/set_escdelay(1);/g' ./test/tclock.c"
+:::::::
+::bash -c 'find . -name "nconf.c" -print0 | xargs sed -i "s/ESCDELAY = 1;/set_escdelay(1);/g"' 
+::bash -c 'grep -rl " ESCDELAY = 1;" ./ | xargs sed -i "s/ESCDELAY = 1;/set_escdelay(1);/g"'
 ::bash -c 'find . -type f -name "nconf.c" -exec sed -i"" -e "s/ESCDELAY = 1;/set_escdelay(1);/g" {} \;'
 ::find . -name Root -exec sed -i 's/1.2.3.4\/home/foo.com\/mnt/' {} \;
 ::bash -c "find . -name 'nconf.c' -print0 | xargs -0 sed -i '' -e 's/ESCDELAY = 1;/set_escdelay(1);/g'"
