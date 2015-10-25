@@ -4,7 +4,7 @@
  conf_OBJ = $(patsubst %.c,%.o,$(conf_SRC))
  conf_DEP = $(patsubst %.o,%.dep,$(conf_OBJ))
  $(conf_OBJ) $(conf_DEP): CFLAGS += $(INTL_CFLAGS)
-++conf: LDFLAGS += -lintl
++conf: LDFLAGS += -lintl
  
  # What's needed to build 'mconf'
  mconf_SRC = mconf.c

@@ -1,11 +1,11 @@
 --- esp-open-sdk/crosstool-NG/kconfig/nconf_old.c 2015-10-25 07:21:05.453125000 +0100
 +++ esp-open-sdk/crosstool-NG/kconfig/nconf.c 2015-10-24 08:15:20.521484300 +0200
 @@ -1518,7 +1518,7 @@
-  }
+	}
  
-  notimeout(stdscr, FALSE);
+	notimeout(stdscr, FALSE);
 - ESCDELAY = 1;
 + set_escdelay(1);
  
-  /* set btns menu */
-  curses_menu = new_menu(curses_menu_items);
+	/* set btns menu */
+	curses_menu = new_menu(curses_menu_items);
