@@ -4,8 +4,8 @@
 	}
  
 	notimeout(stdscr, FALSE);
-- ESCDELAY = 1;
-+ set_escdelay(1);
+-	ESCDELAY = 1;
++	set_escdelay(1);
  
 	/* set btns menu */
 	curses_menu = new_menu(curses_menu_items);
