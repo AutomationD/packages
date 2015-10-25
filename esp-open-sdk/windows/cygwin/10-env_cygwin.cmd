@@ -9,9 +9,6 @@ echo Configuring choco sources
 choco sources add -name kireevco -source 'https://www.myget.org/F/kireevco-chocolatey/' -y
 
 
-echo Enabling case sensitivity
-REG ADD "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\kernel" /v "obcaseinsensitive" /t REG_DWORD /d 0 /f
-
 echo Installing Cygwin and Packages
 ::@powershell choco install cygwin -y --overrideArgs --installArgs '-q -R C:\tools\cygwin -l C:\tools\cygwin\packages -s http://mirrors.kernel.org/sourceware/cygwin'
 ::@powershell choco install cygwin -y --overrideArgs --installArgs '-q -R C:\tools\cygwin -l C:\tools\cygwin\packages -s http://mirrors.kernel.org/sourceware/cygwin --packages netcat,procps,git,gperf,bison,flex,patch,make,automake,gcc-tools-epoch2-automake,autoconf,autoconf2.5,libtool,subversion,gcc-core,gcc-g++,catgets,wget,findutils,libncursesw-devel,libncurses-devel,gettext,libexpat-devel,libintl-devel,libintl8,cygwin-devel'
@@ -31,6 +28,14 @@ choco install cygwin -y --overrideArgs --installArgs "-q -R C:\tools\cygwin -l C
 
 echo saving current path
 echo %PATH% > %CD%\path.save
+
+echo Enabling case sensitivity
+REG ADD "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\kernel" /v "obcaseinsensitive" /t REG_DWORD /d 0 /f
+
+echo Patching fstab to be case-sensitive
+echo none /cygdrive cygdrive binary,posix=1,user 0 0 > c:/tools/cygwin/etc/fstab
+
+
 ::echo Set Path - making sure our path is short enough, otherwise cygwin will be slow
 ::set PATH="%PATH%;c:\tools\cygwin\bin;c:\tools\cygwin\sbin;c:\tools\cygwin\lib"
 

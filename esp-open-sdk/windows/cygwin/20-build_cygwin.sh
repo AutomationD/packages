@@ -5,6 +5,14 @@ BUILD_DIR=$PWD/esp-open-sdk
 echo Cloning esp-open-sdk recursively
 git clone https://github.com/pfalcon/esp-open-sdk.git --recursive
 
+
+# echo Patching nconf.c
+# sed -i 's/ESCDELAY = 1;/set_escdelay(1);/g' ./crosstool-NG/kconfig/nconf.c
+
+echo "Patching stuff"
+patch esp-open-sdk/crosstool-NG/kconfig/nconf.c < patches/kconfig-nconf.c.patch
+patch esp-open-sdk/crosstool-NG/kconfig/Makefile < patches/kconfig-Makefile.patch
+
 echo Descending to esp-open-sdk
 cd esp-open-sdk
 
@@ -14,14 +22,8 @@ mkdir -p /opt/esp-open-sdk
 mount
 
 
-echo Patching nconf.c
-sed -i 's/ESCDELAY = 1;/set_escdelay(1);/g' ./crosstool-NG/kconfig/nconf.c
 
 ###### TODO Apply patches from 'patches' dir...
-
-
-
-patch $BUILD_DIR/crosstool-NG/kconfig/Makefile < $BUILD_DIR/../patches/kconfig.patch
 
 # export CC=/usr/bin/i686-w64-mingw32-gcc.exe
 # export CXX=/usr/bin/i686-w64-mingw32-g++.exe
