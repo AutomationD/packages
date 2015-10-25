@@ -78,6 +78,7 @@ sed -i 's/setlocale/double fraction = 0.0;\nsetlocale/g' ./test/tclock.c
 make
 make install
 
+cd $BUILD_DIR
 
 echo Running make
 make STANDALONE=y --debug
