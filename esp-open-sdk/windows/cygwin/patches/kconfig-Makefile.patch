@@ -1,6 +1,6 @@
---- esp-open-sdk/crosstool-NG/kconfig/Makefile  2015-10-24 08:15:15.052734300 +0200
-+++ esp-open-sdk/crosstool-NG/kconfig/Makefile_new  2015-10-25 07:32:11.175781200 +0100
-@@ -35,20 +35,21 @@
+--- esp-open-sdk/crosstool-NG/kconfig/Makefile  2015-10-25 18:05:34.422851500 +0100
++++ esp-open-sdk/crosstool-NG/kconfig/Makefile.orig 2015-10-25 18:07:30.878906200 +0100
+@@ -35,20 +35,22 @@
  conf_OBJ = $(patsubst %.c,%.o,$(conf_SRC))
  conf_DEP = $(patsubst %.o,%.dep,$(conf_OBJ))
  $(conf_OBJ) $(conf_DEP): CFLAGS += $(INTL_CFLAGS)
@@ -10,10 +10,10 @@
  mconf_SRC = mconf.c
  mconf_OBJ = $(patsubst %.c,%.o,$(mconf_SRC))
  mconf_DEP = $(patsubst %.c,%.dep,$(mconf_SRC))
++HOSTLOADLIBES_mconf += -ltinfo
  $(mconf_OBJ) $(mconf_DEP): CFLAGS += $(NCURSES_CFLAGS) $(INTL_CFLAGS)
 -mconf: LDFLAGS += $(NCURSES_LDFLAGS)
 +mconf: LDFLAGS += -lintl $(NCURSES_LDFLAGS)
-+HOSTLOADLIBES_mconf += -ltinfo
  
  # What's needed to build 'nconf'
  nconf_SRC = nconf.c nconf.gui.c
