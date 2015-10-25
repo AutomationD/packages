@@ -13,6 +13,7 @@
  $(mconf_OBJ) $(mconf_DEP): CFLAGS += $(NCURSES_CFLAGS) $(INTL_CFLAGS)
 -mconf: LDFLAGS += $(NCURSES_LDFLAGS)
 +mconf: LDFLAGS += -lintl $(NCURSES_LDFLAGS)
++HOSTLOADLIBES_mconf += -ltinfo
  
  # What's needed to build 'nconf'
  nconf_SRC = nconf.c nconf.gui.c
