@@ -37,7 +37,7 @@ while true ; do
 done
 
 # check if mingw is mounted, mount if needed
-if [ -d /mingw]; then
+if [ -d /mingw ]; then
   df /mingw
   if [ $? -gt 0 ]; then
     mount $MINGW_PATH /mingw
