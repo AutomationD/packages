@@ -16,7 +16,7 @@ XTTC=$PWD/$TARGET
 XTBP=$PWD/build
 XTDLP=$PWD/dl
 
-MINGW_PATH=c:/mingw
+MINGW_PATH=c:/tools/mingw64
 PATH=$XTTC/bin:$PATH
 
 GMP="gmp-6.0.0a"
@@ -37,18 +37,19 @@ while true ; do
 done
 
 # check if mingw is mounted, mount if needed
-if [ -d /mingw ]; then
-  df /mingw
+if [ -d /mingw64 ]; then
+  df /mingw64
   if [ $? -gt 0 ]; then
-    mount $MINGW_PATH /mingw
+    mount $MINGW_PATH /mingw64
     if [ $? -gt 0 ]; then
       echo "Failed to mount mingw using"
       echo $MINGW_PATH
       exit 1
     fi
-    PATH=/mingw/bin:$PATH
+    PATH=/mingw64/bin:$PATH
   fi
 fi
+
 #find $XTDLP/*/build -type d | xargs rm -rf
 mkdir -p $XTTC $XTDLP $XTBP
 
