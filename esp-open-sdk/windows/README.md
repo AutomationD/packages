@@ -1,7 +1,7 @@
 Install git & add it to a path:
 
 ```cmd
-choco install git.install --params="/NoAutoCrlf" -y --force
+choco install git.install --params="/NoAutoCrlf" -y
 ```
 
 Optionally install ConEmu

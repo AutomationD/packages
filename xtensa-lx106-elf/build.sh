@@ -8,7 +8,7 @@
 # Use mingw-get to install these.
 # run this script from msys's or any unix console.
 
-JOBS=-j6
+JOBS=-j1
 
 TARGET=xtensa-lx106-elf
 
@@ -20,8 +20,8 @@ MINGW_PATH=c:/tools/mingw64
 PATH=$XTTC/bin:$PATH
 
 GMP="gmp-6.0.0a"
-MPFR="mpfr-3.1.3"
-MPC="mpc-1.0.3"
+MPFR="mpfr-3.1.2"
+MPC="mpc-1.0.2"
 
 DOWNLOAD=1
 RECONF=1
@@ -96,6 +96,9 @@ mkdir -p $XTDLP/gcc-xtensa/{build-1,build-2}
 mkdir -p $XTDLP/esp-newlib/build $XTDLP/esp-binutils/build
 
 set -e
+
+#export C_INCLUDE_PATH=$XTDLP/$GMP/build/include:$XTDLP/$GMP/build/include:$XTDLP/$MPC/build/include:$C_INCLUDE_PATH
+#export LIBRARY_PATH=$XTDLP/$GMP/build/lib:$XTDLP/$GMP/build/lib:$XTDLP/$MPC/build/lib:$LIBRARY_PATH
 
 cd $XTDLP/$GMP/build
 if [ $BASELIBS -gt 0 -o ! -f .built ]; then
