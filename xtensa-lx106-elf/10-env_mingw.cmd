@@ -22,8 +22,13 @@ setx /M PATH "c:\tools\mingw64\bin\;%PATH%" && set PATH=c:\tools\mingw64\bin\;%P
 
 echo Installing required mingw components
 
-mingw-get install mingw32-base mingw32-mgwport mingw32-pdcurses mingw32-make mingw32-autoconf mingw32-automake mingw-developer-toolkit mingw-developer-toolkit mingw32-gdb gcc gcc-c++ libz bzip2
+mingw-get install mingw32-base mingw32-mgwport mingw32-pdcurses mingw32-make mingw32-autoconf mingw32-automake mingw-developer-toolkit mingw32-gdb gcc gcc-c++ libz bzip2
 mingw-get install coreutils msys-patch
+
+:: hack for xgettext.exe bug
+echo renaming xgettext.exe to xgettext_.exe
+move /Y "c:\tools\mingw64\bin\xgettext.exe" "c:\tools\mingw64\bin\xgettext_.exe"
+
 ::msys-base msys-coreutils msys-coreutils-ext msys-gcc-bin msys-m4 msys-bison-bin msys-bison msys-flex msys-flex-bin msys-gawk msys-make msys-regex msys-libregex msys-sed msys-autoconf msys-automake msys-mktemp msys-patch msys-libtool
 ::msys-gperf 
 ::alias find="/usr/bin/find"

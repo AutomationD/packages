@@ -18,6 +18,7 @@ ImDiskTk.exe /fullsilent
 
 Clone repo, configure environment
 ```cmd
+r:
 git clone https://github.com/kireevco/packages.git
 cd packages/xtensa-lx106-elf
 10-env_mingw.cmd
