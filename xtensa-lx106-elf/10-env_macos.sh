@@ -7,7 +7,7 @@
 # fi
 
 cd ~/
-if [ -d $((xcode-select -p)) ]; then
+if [ -d $(eval 'xcode-select -p') ]; then
   echo "Xcode is installed"
 else
   echo "Installing Xcode"
