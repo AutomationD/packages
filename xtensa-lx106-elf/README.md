@@ -18,7 +18,6 @@ ImDiskTk.exe /fullsilent
 r:
 ```
 
-
 Clone repo, configure environment
 ```cmd
 git clone https://github.com/kireevco/packages.git
@@ -29,4 +28,31 @@ cd packages/xtensa-lx106-elf
 Start build
 ```cmd
 bash.exe -c "./build.sh"
+```
+
+## MacOS
+Clone repo, configure environment
+```shell
+git clone https://github.com/kireevco/packages.git
+cd packages/xtensa-lx106-elf
+./10-env_macos.sh
+```
+
+Start build
+```shell
+./build.sh
+```
+
+
+## Linux
+Clone repo, configure environment
+```shell
+git clone https://github.com/kireevco/packages.git
+cd packages/xtensa-lx106-elf
+./10-env_linux.sh
+```
+
+Start build
+```shell
+./build.sh
 ```
