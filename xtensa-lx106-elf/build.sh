@@ -105,6 +105,7 @@ if [ $BASELIBS -gt 0 -o ! -f .built ]; then
   echo "Buidling GMP"
   if [ $RECONF -gt 0 -o ! -f .configured ]; then
     rm -f .configured
+    chmod +rx ../configure
     ../configure --prefix=$XTBP/gmp --disable-shared --enable-static
     touch .configured
   fi
@@ -121,6 +122,7 @@ if [ $BASELIBS -gt 0 -o ! -f .built ]; then
   echo "Buidling MPFR"
   if [ $RECONF -gt 0 -o ! -f .configured ]; then
     rm -rf .configured
+    chmod +rx ../configure
     ../configure --prefix=$XTBP/mpfr --with-gmp=$XTBP/gmp --disable-shared --enable-static
     touch .configured
   fi
@@ -137,6 +139,7 @@ if [ $BASELIBS -gt 0 -o ! -f .built ]; then
   echo "Buidling MPC"
   if [ $RECONF -gt 0 -o ! -f .configured ]; then
     rm -f .configured
+    chmod +rx ../configure
     ../configure --prefix=$XTBP/mpc --with-mpfr=$XTBP/mpfr --with-gmp=$XTBP/gmp --disable-shared --enable-static
     touch .configured
   fi
@@ -152,6 +155,7 @@ echo "Buidling Binutils"
 cd $XTDLP/esp-binutils/build
 if [ $RECONF -gt 0 -o ! -f .configured ]; then
   rm -f .configured
+  chmod +rx ../configure
   ../configure --prefix=$XTTC --target=$TARGET --enable-werror=no  --enable-multilib --disable-nls --disable-shared --disable-threads --with-gcc --with-gnu-as --with-gnu-ld
   touch .configured
 fi
@@ -166,6 +170,7 @@ echo "Building first stage GCC"
 cd $XTDLP/gcc-xtensa/build-1
 if [ $RECONF -gt 0 -o ! -f .configured ]; then
   rm -f .configured
+  chmod +rx ../configure
   ../configure --prefix=$XTTC --target=$TARGET --enable-multilib --enable-languages=c --with-newlib --disable-nls --disable-shared --disable-threads --with-gnu-as --with-gnu-ld --with-gmp=$XTBP/gmp --with-mpfr=$XTBP/mpfr --with-mpc=$XTBP/mpc  --disable-libssp --without-headers --disable-__cxa_atexit
   touch .configured
 fi
@@ -180,6 +185,7 @@ echo "Buidling Newlib"
 cd $XTDLP/esp-newlib/build
 if [ $RECONF -gt 0 -o ! -f .configured ]; then
   rm -f .configured
+  chmod +rx ../configure
   ../configure  --prefix=$XTTC --target=$TARGET --enable-multilib --with-gnu-as --with-gnu-ld --disable-nls
   touch .configured
 fi
@@ -194,6 +200,7 @@ echo "Building final GCC"
 cd $XTDLP/gcc-xtensa/build-2
 if [ $RECONF -gt 0 -o ! -f .configured ]; then
   rm -f .configured
+  chmod +rx ../configure
   ../configure --prefix=$XTTC --target=$TARGET --enable-multilib --disable-nls --disable-shared --disable-threads --with-gnu-as --with-gnu-ld --with-gmp=$XTBP/gmp --with-mpfr=$XTBP/mpfr --with-mpc=$XTBP/mpc --enable-languages=c,c++ --with-newlib --disable-libssp --disable-__cxa_atexit
   touch .configured
 fi
